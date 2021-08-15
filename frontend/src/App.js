@@ -1,12 +1,14 @@
 import { Container } from "react-bootstrap";
 import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+// Route used to show different components
 import Footer from "./components/footer";
 import Header from "./components/header";
 import HomeScreen from "./screens/HomeScreen";
 
 function App() {
   return (
-    <>
+    <Router>
       <Header />
       <main className="my-3">
         {/* <div className="container">
@@ -15,12 +17,15 @@ function App() {
         {/* is equivalent to below */}
         <Container>
           <h1>E-Commerce App</h1>
-          <HomeScreen />
+          {/* <HomeScreen /> */}
+          {/* Same as below */}
+          {/* exact => path must be exactly same */}
+          <Route path="/" component={HomeScreen} exact></Route>
         </Container>
       </main>
 
       <Footer />
-    </>
+    </Router>
   );
 }
 
