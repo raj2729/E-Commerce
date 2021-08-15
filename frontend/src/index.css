@@ -3,7 +3,16 @@ main {
 }
 
 .star-icon {
-  color: #ffd700;
+  color: #ff9900;
   /* -webkit-text-stroke-width: 1px; */
   /* -webkit-text-stroke-color: black; */
+}
+
+.success-stock-color {
+  color: green;
+  font-weight: 600;
+}
+
+.not-success-stock-color {
+  color: red;
 }
