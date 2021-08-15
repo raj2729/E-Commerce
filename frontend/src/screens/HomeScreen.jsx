@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
-import Products from "../products";
+import axios from "axios";
+// import Products from "../products";
+
 import ProductScreen from "./ProductScreen";
 
 const HomeScreen = () => {
+  const [Products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      // const res = await axios.get('/products');
+      // The information received from axios is in .data
+      // setProducts(res.data);
+
+      // Directly destructure it
+      // http://localhost:8080/
+      const { data } = await axios.get("/products");
+      // console.log(data);
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <>
       <Row>

@@ -1,5 +1,6 @@
-import React from "react";
-import Product from "../products";
+import React, { useState, useEffect } from "react";
+// import Product from "../products";
+import axios from "axios";
 import {
   ListGroup,
   Image,
@@ -12,7 +13,16 @@ import { Link } from "react-router-dom";
 import Rating from "../components/rating";
 
 const ProductDetails = ({ match }) => {
-  const product = Product.find((p) => p._id === match.params.id);
+  const [product, setProduct] = useState([]);
+  // const product = Product.find((p) => p._id === match.params.id);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/products/${match.params.id}`);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [match]);
 
   return (
     <div>
