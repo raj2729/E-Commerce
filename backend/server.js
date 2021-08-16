@@ -1,12 +1,17 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const connectDB = require("./config/config");
 
 const products = require("./data/products");
 
+dotenv.config();
+
+// Connecting to mongodb server
+connectDB();
+
 const app = express();
 
-dotenv.config();
 const PORT = process.env.PORT;
 const NODE_ENV = process.env.NODE_ENV;
 
