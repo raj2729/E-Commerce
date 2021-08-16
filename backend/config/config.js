@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const colors = require("colors");
 
 const connectDB = async () => {
   try {
@@ -11,7 +12,7 @@ const connectDB = async () => {
         useCreateIndex: true,
       })
       .then(() => {
-        console.log("Database Successfully Connected");
+        console.log("Database Successfully Connected".cyan);
       });
   } catch (error) {
     console.log("Error connecting to Database");

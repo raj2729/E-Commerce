@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/config");
+const colors = require("colors");
 
 const products = require("./data/products");
 
@@ -31,5 +32,5 @@ app.get("/products/:id", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running in ${NODE_ENV} on port ${PORT}.`);
+  console.log(`Server is running in ${NODE_ENV} on port ${PORT}.`.cyan);
 });
