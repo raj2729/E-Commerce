@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
-import axios from "axios";
+// import axios from "axios";
 // import Products from "../products";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
 
 import ProductScreen from "./ProductScreen";
+// import Loader from "../components/shared/Loader";
+import Loader from "../components/shared/Loader";
+import Message from "../components/shared/Message";
 
 const HomeScreen = () => {
   // const [Products, setProducts] = useState([]);
@@ -30,16 +33,16 @@ const HomeScreen = () => {
     //  Using REDUX
 
     dispatch(listProducts());
-  }, []);
+  }, [dispatch]);
 
-  const Products = [];
+  // const Products = [];
 
   return (
     <>
       {loading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <h2>{error}</h2>
+        <Message variant="danger">{error}</Message>
       ) : (
         <Row>
           {products.map((product) => (
