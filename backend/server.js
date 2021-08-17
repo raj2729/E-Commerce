@@ -6,6 +6,8 @@ const colors = require("colors");
 
 const products = require("./data/products");
 
+const productsRoute = require("./routes/productsRoute");
+
 dotenv.config();
 
 // Connecting to mongodb server
@@ -22,14 +24,7 @@ app.get("/", (req, res) => {
   res.send("<h1>Welcome to node server</h1>");
 });
 
-app.get("/products", cors(), (req, res) => {
-  res.json(products);
-});
-
-app.get("/products/:id", (req, res) => {
-  const product = products.find((p) => p._id === req.params.id);
-  res.json(product);
-});
+app.use("/api", productsRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running in ${NODE_ENV} on port ${PORT}.`.cyan);

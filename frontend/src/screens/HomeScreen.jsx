@@ -16,7 +16,7 @@ const HomeScreen = () => {
 
       // Directly destructure it
       // http://localhost:8080/
-      const { data } = await axios.get("/products");
+      const { data } = await axios.get("/api/products");
       // console.log(data);
       setProducts(data);
     };
