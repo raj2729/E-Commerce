@@ -5,8 +5,15 @@ import thunk from "redux-thunk";
 // To get an option of viewing redu from browseer
 import { composeWithDevTools } from "redux-devtools-extension";
 
+// Importing reducers
+import { productListReducer } from "./reducers/productReducer";
+
 // get all reducers in a single variable using combineReducers
-const reducer = combineReducers({});
+const reducer = combineReducers({
+  // Anytime if u want to access productList it can be accessed using this
+  //  It is present inside state and is used using useSelector
+  productList: productListReducer,
+});
 
 // Initial State
 const initialState = {};
