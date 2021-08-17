@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/config");
 const colors = require("colors");
 
+const { errorHandler } = require("./middlewares/errorMiddleware");
+
 const products = require("./data/products");
 
 const productsRoute = require("./routes/productsRoute");
@@ -25,6 +27,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", productsRoute);
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running in ${NODE_ENV} on port ${PORT}.`.cyan);
