@@ -10,6 +10,11 @@ import {
   productListReducer,
   productDetailsReducer,
 } from "./reducers/productReducer";
+import { cartReducer } from "./reducers/cartReducer";
+
+const cartItemsFromStorage = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : [];
 
 // get all reducers in a single variable using combineReducers
 const reducer = combineReducers({
@@ -17,10 +22,16 @@ const reducer = combineReducers({
   //  It is present inside state and is used using useSelector
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  cart: cartReducer,
 });
 
 // Initial State
-const initialState = {};
+const initialState = {
+  cart: {
+    // cartItems: "Raj",
+    cartItems: cartItemsFromStorage,
+  },
+};
 
 // communicates between react and redux
 const middleware = [thunk];
