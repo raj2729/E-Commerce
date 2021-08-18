@@ -22,7 +22,7 @@ const ProductDetails = ({ history, match }) => {
   // const [product, setProduct] = useState([]);
   // const product = Product.find((p) => p._id === match.params.id);
 
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
