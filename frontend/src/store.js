@@ -6,13 +6,17 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // Importing reducers
-import { productListReducer } from "./reducers/productReducer";
+import {
+  productListReducer,
+  productDetailsReducer,
+} from "./reducers/productReducer";
 
 // get all reducers in a single variable using combineReducers
 const reducer = combineReducers({
   // Anytime if u want to access productList it can be accessed using this
   //  It is present inside state and is used using useSelector
   productList: productListReducer,
+  productDetails: productDetailsReducer,
 });
 
 // Initial State
