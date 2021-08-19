@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 import Message from "../components/shared/Message";
 import { Link } from "react-router-dom";
 import {
@@ -32,7 +32,8 @@ const CartScreen = ({ match, location, history }) => {
   console.log(cartItems);
 
   const removeFromCartHandler = (id) => {
-    console.log("Removed");
+    // console.log("Removed");
+    dispatch(removeFromCart(id));
   };
 
   const checkout = () => {
@@ -81,7 +82,7 @@ const CartScreen = ({ match, location, history }) => {
                     <Col md={2}>
                       <Form.Select
                         aria-label="Default select example"
-                        value={item.qty}
+                        value={Number(item.qty)}
                         onChange={(e) =>
                           dispatch(
                             addToCart(item.product, Number(e.target.value))
@@ -118,7 +119,8 @@ const CartScreen = ({ match, location, history }) => {
                 <h2>
                   Subtotal (
                   {cartItems.reduce(
-                    (accumulator, item) => accumulator + item.qty,
+                    (accumulator, item) =>
+                      Number(accumulator) + Number(item.qty),
                     0
                   )}
                   {/* {findTotalItems()})  */}
