@@ -9,6 +9,7 @@ const { errorHandler } = require("./middlewares/errorMiddleware");
 const products = require("./data/products");
 
 const productsRoute = require("./routes/productsRoute");
+const userRoute = require("./routes/usersRoute");
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ dotenv.config();
 connectDB();
 
 const app = express();
+// Body Parser middleware, no need to install body-parser package
+app.use(express.json());
 
 const PORT = process.env.PORT;
 const NODE_ENV = process.env.NODE_ENV;
@@ -27,6 +30,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", productsRoute);
+app.use("/api/users", userRoute);
 
 app.use(errorHandler);
 
