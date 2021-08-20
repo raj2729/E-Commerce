@@ -14,7 +14,7 @@ import {
   Form,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Rating from "../components/rating";
+import Rating from "../components/Rating";
 import Loader from "../components/shared/Loader";
 import Message from "../components/shared/Message";
 

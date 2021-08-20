@@ -2,8 +2,8 @@ import { Container } from "react-bootstrap";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // Route used to show different components
-import Footer from "./components/footer";
-import Header from "./components/header";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import HomeScreen from "./screens/HomeScreen";
 import ProductDetails from "./screens/ProductDetails";
 import CartScreen from "./screens/CartScreen";
