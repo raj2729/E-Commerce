@@ -12,6 +12,20 @@ import {
 } from "./reducers/productReducer";
 import { cartReducer } from "./reducers/cartReducer";
 
+import { userLoginReducer } from "./reducers/userReducer";
+
+// USING REDUX
+/*
+1. create constants
+2. create reducer fxn
+3. import reducer fxn in store
+4. create actions
+*/
+
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
@@ -23,6 +37,7 @@ const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
+  userLogin: userLoginReducer,
 });
 
 // Initial State
@@ -30,6 +45,9 @@ const initialState = {
   cart: {
     // cartItems: "Raj",
     cartItems: cartItemsFromStorage,
+  },
+  userLogin: {
+    userInfo: userInfoFromStorage,
   },
 };
 
