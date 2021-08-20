@@ -10,6 +10,10 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
+
   return (
     <>
       <Navbar bg="dark" expand="lg" variant="dark" collapseOnSelect>
