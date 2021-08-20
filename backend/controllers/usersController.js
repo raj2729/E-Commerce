@@ -41,4 +41,29 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { authController, getUserProfile };
+// New user
+const registerUser = asyncHandler(async (req, res) => {
+  const { email, name, password } = req.body;
+
+  const userExist = await User.findOne({ email });
+  if (userExist) {
+    res.status(400);
+    throw new Error("User already exists");
+  } else {
+    const user = await User.create({ name, email, password });
+    if (user) {
+      res.status(201).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        token: generateToken(user._id),
+      });
+    } else {
+      res.status(404);
+      throw new Error("User not created");
+    }
+  }
+});
+
+module.exports = { authController, getUserProfile, registerUser };
