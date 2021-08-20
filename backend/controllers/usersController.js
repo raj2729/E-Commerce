@@ -25,4 +25,20 @@ const authController = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { authController };
+// get user details - Private Route
+const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (user) {
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error("No User found");
+  }
+});
+
+module.exports = { authController, getUserProfile };
