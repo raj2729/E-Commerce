@@ -8,6 +8,7 @@ import HomeScreen from "./screens/HomeScreen";
 import ProductDetails from "./screens/ProductDetails";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           {/* exact => path must be exactly same */}
           <Route path="/" component={HomeScreen} exact></Route>
           <Route path="/login" component={LoginScreen} exact></Route>
+          <Route path="/register" component={RegisterScreen} exact></Route>
           <Route path="/products/:id" component={ProductDetails} exact></Route>
           <Route path="/cart/:id?" component={CartScreen} exact></Route>
         </Container>
