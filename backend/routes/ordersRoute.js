@@ -5,6 +5,6 @@ const { protect } = require("../middlewares/authMiddleware");
 const router = express.Router();
 
 // Create new order
-router.route("/").get(protect, addOrderItem);
+router.route("/").post(protect, addOrderItem);
 
 module.exports = router;

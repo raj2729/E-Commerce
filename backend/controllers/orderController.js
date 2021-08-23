@@ -3,6 +3,7 @@ const { createStore } = require("redux");
 const Order = require("../models/OrderModel");
 
 const addOrderItem = asyncHandler(async (req, res) => {
+  // try {
   const {
     orderItems,
     shippingAddress,
@@ -30,8 +31,12 @@ const addOrderItem = asyncHandler(async (req, res) => {
     });
 
     const createOrder = await order.save();
+
     res.status(201).json(createOrder);
   }
+  // } catch (error) {
+  //   console.log(error);
+  // }
 });
 
 module.exports = { addOrderItem };

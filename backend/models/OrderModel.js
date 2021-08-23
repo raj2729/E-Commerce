@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema(
   {
-    User: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
     },
-    OrderItems: [
+    orderItems: [
       {
         name: {
           type: String,
           required: true,
         },
-        qyt: {
+        qty: {
           type: Number,
           required: true,
         },
@@ -25,7 +25,7 @@ const orderSchema = mongoose.Schema(
           type: Number,
           required: true,
         },
-        Product: {
+        product: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
           ref: "Product",
@@ -50,7 +50,7 @@ const orderSchema = mongoose.Schema(
         required: true,
       },
     },
-    payment: {
+    paymentMethod: {
       type: String,
       required: true,
     },

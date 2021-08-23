@@ -47,12 +47,12 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
 
 export const saveShippingAddress = (data) => async (dispatch) => {
   try {
-    dispatch({
+    localStorage.setItem("shippingAddress", JSON.stringify(data));
+    await dispatch({
       type: CART_SAVE_SHIPPING_ADDRESS,
       payload: data,
     });
 
-    localStorage.setItem("shippingAddress", JSON.stringify(data));
     // throw new Error("Hello World u r hacked");
   } catch (error) {
     <Message variant="danger">{error}</Message>;
