@@ -68,7 +68,7 @@ const ShippingScreen = ({ history }) => {
               onChange={(e) => setPostalCode(e.target.value)}
             ></Form.Control>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button className="mt-5" variant="primary" type="submit">
             Continue to Payment
           </Button>
         </Form>
