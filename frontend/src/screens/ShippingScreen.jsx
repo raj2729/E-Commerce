@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import FormContainer from "../components/shared/FormContainer";
 import { saveShippingAddress } from "../actions/cartActions";
+import CheckoutStep from "../components/shared/CheckoutStep";
 
 const ShippingScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -23,53 +24,56 @@ const ShippingScreen = ({ history }) => {
   };
 
   return (
-    <FormContainer>
-      <Form onSubmit={submitHandler}>
-        <Form.Group controlId="address">
-          <Form.Label>Address</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Address"
-            value={address}
-            required="true"
-            onChange={(e) => setAddress(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="city">
-          <Form.Label>City</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter City"
-            value={city}
-            required="true"
-            onChange={(e) => setCity(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="country">
-          <Form.Label>Country</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Country"
-            value={country}
-            required="true"
-            onChange={(e) => setCountry(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="postalCode">
-          <Form.Label>Postal Code</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Postal Code"
-            value={postalCode}
-            required="true"
-            onChange={(e) => setPostalCode(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Continue to Payment
-        </Button>
-      </Form>
-    </FormContainer>
+    <>
+      <CheckoutStep step1 step2 />
+      <FormContainer>
+        <Form onSubmit={submitHandler}>
+          <Form.Group controlId="address">
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Address"
+              value={address}
+              required="true"
+              onChange={(e) => setAddress(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+          <Form.Group controlId="city">
+            <Form.Label>City</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter City"
+              value={city}
+              required="true"
+              onChange={(e) => setCity(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+          <Form.Group controlId="country">
+            <Form.Label>Country</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Country"
+              value={country}
+              required="true"
+              onChange={(e) => setCountry(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+          <Form.Group controlId="postalCode">
+            <Form.Label>Postal Code</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Postal Code"
+              value={postalCode}
+              required="true"
+              onChange={(e) => setPostalCode(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Continue to Payment
+          </Button>
+        </Form>
+      </FormContainer>
+    </>
   );
 };
 
