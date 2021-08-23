@@ -10,6 +10,7 @@ const products = require("./data/products");
 
 const productsRoute = require("./routes/productsRoute");
 const userRoute = require("./routes/usersRoute");
+const orderRoute = require("./routes/ordersRoute");
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 
 app.use("/api", productsRoute);
 app.use("/api/users", userRoute);
+app.use("/api/orders", orderRoute);
 
 app.use(errorHandler);
 
