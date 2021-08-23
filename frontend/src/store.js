@@ -35,6 +35,10 @@ const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
+const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
+  ? JSON.parse(localStorage.getItem("shippingAddress"))
+  : [];
+
 // get all reducers in a single variable using combineReducers
 const reducer = combineReducers({
   // Anytime if u want to access productList it can be accessed using this
@@ -53,6 +57,7 @@ const initialState = {
   cart: {
     // cartItems: "Raj",
     cartItems: cartItemsFromStorage,
+    shippingAddress: shippingAddressFromStorage,
   },
   userLogin: {
     userInfo: userInfoFromStorage,

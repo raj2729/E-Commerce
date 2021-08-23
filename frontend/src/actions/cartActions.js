@@ -1,7 +1,11 @@
 import axios from "axios";
 import Message from "../components/shared/Message";
 
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstant";
+import {
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM,
+  CART_SAVE_SHIPPING_ADDRESS,
+} from "../constants/cartConstant";
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   try {
@@ -34,6 +38,19 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
       "cartItems",
       JSON.stringify(getState().cart.cartItems)
     );
+    // throw new Error("Hello World u r hacked");
+  } catch (error) {
+    <Message variant="danger">{error}</Message>;
+  }
+};
+
+export const saveShippingAddress = (data) => async (dispatch) => {
+  try {
+    dispatch({
+      type: CART_SAVE_SHIPPING_ADDRESS,
+    });
+
+    localStorage.setItem("shippingAddress", JSON.stringify(data));
     // throw new Error("Hello World u r hacked");
   } catch (error) {
     <Message variant="danger">{error}</Message>;
