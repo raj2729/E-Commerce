@@ -4,6 +4,7 @@ const {
   authController,
   getUserProfile,
   registerUser,
+  updateUserProfile,
 } = require("../controllers/usersController");
 
 const { protect } = require("../middlewares/authMiddleware");
@@ -14,7 +15,10 @@ const router = express.Router();
 router.route("/login").post(authController);
 
 // get user details - Private Route
-router.route("/profile").get(protect, getUserProfile);
+router
+  .route("/profile")
+  .get(protect, getUserProfile)
+  .put(protect, updateUserProfile);
 
 // Register new user
 router.route("/").post(registerUser);
