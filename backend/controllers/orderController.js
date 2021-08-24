@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const { createStore } = require("redux");
 const Order = require("../models/OrderModel");
+const mongoose = require("mongoose");
 
 const addOrderItem = asyncHandler(async (req, res) => {
   // try {
@@ -73,4 +74,24 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { addOrderItem, getOrderById, updateOrderToPaid };
+// Get all user orders
+const getMyOrders = asyncHandler(async (req, res) => {
+  try {
+    // Get all user order takes req.user._id
+    /*
+_id not cast to ObjectId error coming 
+When this route moved on top of all routes in router
+the error gets solved
+*/
+    const orders = await Order.find({
+      // user: mongoose.Types.ObjectId(req.user._id),
+      // Or normal also works
+      user: req.user._id,
+    });
+    res.json(orders);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+module.exports = { addOrderItem, getOrderById, updateOrderToPaid, getMyOrders };
