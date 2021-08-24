@@ -34,6 +34,10 @@ app.use("/api", productsRoute);
 app.use("/api/users", userRoute);
 app.use("/api/orders", orderRoute);
 
+app.use("/api/config/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID);
+});
+
 app.use(errorHandler);
 
 app.listen(PORT, () => {
