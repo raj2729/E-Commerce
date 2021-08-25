@@ -25,6 +25,8 @@ import {
   userUpdateProfileReducer,
 } from "./reducers/userReducer";
 
+import { adminLoginReducer } from "./reducers/adminReducer";
+
 // USING REDUX
 /*
 1. create constants
@@ -35,6 +37,10 @@ import {
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
+const adminInfoFromStorage = localStorage.getItem("adminInfo")
+  ? JSON.parse(localStorage.getItem("adminInfo"))
   : null;
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
@@ -53,6 +59,7 @@ const reducer = combineReducers({
   productDetails: productDetailsReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
+  adminLogin: adminLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
@@ -71,6 +78,9 @@ const initialState = {
   },
   userLogin: {
     userInfo: userInfoFromStorage,
+  },
+  adminLogin: {
+    adminInfo: adminInfoFromStorage,
   },
 };
 

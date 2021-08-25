@@ -4,10 +4,10 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/shared/Loader";
 import Message from "../components/shared/Message";
-import { login } from "../actions/userActions";
+import { adminlogin } from "../actions/adminActions";
 import FormContainer from "../components/shared/FormContainer";
 
-const LoginScreen = ({ location, history }) => {
+const AdminLoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,25 +15,25 @@ const LoginScreen = ({ location, history }) => {
 
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const adminLogin = useSelector((state) => state.adminLogin);
+  const { loading, error, adminInfo } = adminLogin;
 
   useEffect(() => {
-    if (userInfo) {
+    if (adminInfo) {
       history.push(redirect);
     }
-  }, [userInfo, history, redirect]);
+  }, [adminInfo, history, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     //dispatch
-    dispatch(login(email, password));
+    dispatch(adminlogin(email, password));
   };
 
   return (
     <>
       <FormContainer>
-        <h1>SIGN IN</h1>
+        <h1>Admin SIGN IN</h1>
         {error && <Message variant="danger">{error}</Message>}
         {loading && <Loader></Loader>}
         <Form onSubmit={submitHandler}>
@@ -59,17 +59,17 @@ const LoginScreen = ({ location, history }) => {
             SIGN IN
           </Button>
         </Form>
-        <Row>
+        {/* <Row>
           <Col>
             New User ?&nbsp;
             <Link to={redirect ? `register?redirect=${redirect}` : "/register"}>
               Register
             </Link>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col className="my-4">
-            Are you Admin ? <Link to={"/adminLogin"}>Admin Dashboard</Link>
+            Not an Admin ? <Link to={"/login"}>Login as User</Link>
           </Col>
         </Row>
       </FormContainer>
@@ -77,4 +77,4 @@ const LoginScreen = ({ location, history }) => {
   );
 };
 
-export default LoginScreen;
+export default AdminLoginScreen;
