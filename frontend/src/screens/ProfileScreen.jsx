@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/shared/Loader";
@@ -7,6 +7,7 @@ import Message from "../components/shared/Message";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import { listMyOrders } from "../actions/orderActions";
 import { LinkContainer } from "react-router-bootstrap";
+import { ORDER_DETAILS_RESET } from "../constants/orderConstant";
 
 const ProfileScreen = ({ location, history }) => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,9 @@ const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
+
+  // const hhistory = useHistory();
+  // hhistory.go(0);
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
@@ -41,6 +45,9 @@ const ProfileScreen = ({ location, history }) => {
         setEmail(user.email);
       }
     }
+    dispatch({
+      type: ORDER_DETAILS_RESET,
+    });
   }, [userInfo, history, user, dispatch]);
 
   const submitHandler = (e) => {
@@ -51,6 +58,7 @@ const ProfileScreen = ({ location, history }) => {
 
   return (
     <>
+      {/* {window.location.reload()} */}
       <Row>
         <Col md={3}>
           <h1>Update Information</h1>

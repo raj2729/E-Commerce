@@ -13,6 +13,7 @@ import {
   ORDER_LIST_MY_REQUEST,
   ORDER_LIST_MY_SUCCESS,
   ORDER_LIST_MY_FAILS,
+  ORDER_DETAILS_RESET,
 } from "../constants/orderConstant";
 
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -136,6 +137,9 @@ export const listMyOrders = () => async (dispatch, getState) => {
     };
     const { data } = await axios.get(`/api/orders/myorders`, config);
 
+    // dispatch({
+    //   type: ORDER_DETAILS_RESET,
+    // });
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,
       payload: data,
