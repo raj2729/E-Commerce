@@ -11,6 +11,7 @@ const products = require("./data/products");
 const productsRoute = require("./routes/productsRoute");
 const userRoute = require("./routes/usersRoute");
 const orderRoute = require("./routes/ordersRoute");
+const adminRoute = require("./routes/adminsRoute");
 
 dotenv.config();
 
@@ -33,6 +34,8 @@ app.get("/", (req, res) => {
 app.use("/api", productsRoute);
 app.use("/api/users", userRoute);
 app.use("/api/orders", orderRoute);
+
+app.use("/api/admin/", adminRoute);
 
 app.use("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID);
