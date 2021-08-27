@@ -65,7 +65,7 @@ const CartScreen = ({ match, location, history }) => {
               } */}
 
               {cartItems.map((item) => (
-                <ListGroupItem>
+                <ListGroupItem key={item.product}>
                   <Row>
                     <Col md={2}>
                       <Image

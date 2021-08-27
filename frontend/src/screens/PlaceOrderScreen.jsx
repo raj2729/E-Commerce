@@ -1,13 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Image,
-  Col,
-  Row,
-  Card,
-  ListGroup,
-  ListGroupItem,
-} from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Button, Image, Col, Row, Card, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { createOrder } from "../actions/orderActions";
 import Message from "../components/shared/Message";
@@ -59,7 +51,9 @@ const PlaceOrderScreen = ({ history }) => {
       history.push(`/order/${order._id}`);
     }
     // eslint-diable-next-line
-  }, [history, success]);
+
+    // It was mentioned in warnings that useEffect must have dependency: order._id
+  }, [history, order._id, success]);
 
   return (
     <>

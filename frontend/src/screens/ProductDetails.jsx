@@ -30,7 +30,7 @@ const ProductDetails = ({ history, match }) => {
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
-  }, [dispatch]);
+  }, [dispatch, match.params.id]);
 
   // useEffect(() => {
   //   const fetchProduct = async () => {

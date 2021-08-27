@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+//import { Link, useHistory } from "react-router-dom";
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/shared/Loader";
@@ -14,7 +14,7 @@ const ProfileScreen = ({ location, history }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   //    If password and confirm password does not match, we will show it inside this below message
-  const [message, setMessage] = useState("");
+  //const [message, setMessage] = useState("");
   const [name, setName] = useState("");
 
   const dispatch = useDispatch();
@@ -44,6 +44,7 @@ const ProfileScreen = ({ location, history }) => {
         setName(user.name);
         setEmail(user.email);
       }
+      dispatch(listMyOrders());
     }
     dispatch({
       type: ORDER_DETAILS_RESET,
@@ -67,7 +68,7 @@ const ProfileScreen = ({ location, history }) => {
             <Message variant="success">Profile successfully updated</Message>
           )}
           {loading && <Loader></Loader>}
-          {message && <Message variant="danger">{message}</Message>}
+          {/* {message && <Message variant="danger">{message}</Message>} */}
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>

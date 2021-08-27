@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Image, Col, Row, Card, ListGroup } from "react-bootstrap";
+import { Image, Col, Row, Card, ListGroup } from "react-bootstrap";
 import { PayPalButton } from "react-paypal-button-v2";
 
 import { Link } from "react-router-dom";
