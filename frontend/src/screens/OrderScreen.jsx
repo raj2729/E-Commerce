@@ -96,8 +96,14 @@ const OrderScreen = ({ match }) => {
               <Message variant="success">
                 Delivered on on {order.deliveredAt}
               </Message>
+            ) : order.isPaid ? (
+              <Message variant="success">
+                Current Status : {order.currentStatus}
+              </Message>
             ) : (
-              <Message variant="danger">Not Delivered</Message>
+              <Message variant="danger">
+                Current Status : {order.currentStatus}
+              </Message>
             )}
           </ListGroup.Item>
           <ListGroup.Item>

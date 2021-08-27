@@ -115,6 +115,11 @@ const orderSchema = mongoose.Schema(
     deliveredAt: {
       type: Date,
     },
+    currentStatus: {
+      type: String,
+      required: true,
+      default: "Payment not done",
+    },
   },
   {
     timestamps: true,

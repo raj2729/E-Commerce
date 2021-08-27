@@ -79,7 +79,7 @@ const CartScreen = ({ match, location, history }) => {
                       <Link to={`/products/${item.product}`}>{item.name}</Link>
                     </Col>
                     <Col md={2}>${item.price}</Col>
-                    <Col md={2}>
+                    <Col md={3}>
                       <Form.Select
                         aria-label="Default select example"
                         value={Number(item.qty)}

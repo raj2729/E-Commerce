@@ -109,6 +109,7 @@ export const payOrder =
         payload: data,
       });
     } catch (error) {
+      console.log(error);
       dispatch({
         type: ORDER_PAY_FAILS,
         payload:
