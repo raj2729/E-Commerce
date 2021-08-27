@@ -16,6 +16,7 @@ import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
+import AdminViewOrdersScreen from "./screens/AdminViewOrdersScreen";
 
 function App() {
   return (
@@ -37,6 +38,11 @@ function App() {
           <Route
             path="/adminHomeScreen"
             component={AdminHomeScreen}
+            exact
+          ></Route>
+          <Route
+            path="/adminViewOrders"
+            component={AdminViewOrdersScreen}
             exact
           ></Route>
           <Route path="/shipping" component={ShippingScreen} exact></Route>

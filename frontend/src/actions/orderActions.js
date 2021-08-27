@@ -119,7 +119,7 @@ export const payOrder =
     }
   };
 
-// All orders
+// All user orders
 export const listMyOrders = () => async (dispatch, getState) => {
   try {
     dispatch({

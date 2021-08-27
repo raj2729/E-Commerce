@@ -3,7 +3,7 @@ require("colors");
 const dotenv = require("dotenv");
 const users = require("./data/users");
 const products = require("./data/products");
-const User = require("./models/User");
+const User = require("./models/UserModel");
 const Order = require("./models/OrderModel");
 const Product = require("./models/ProductModel");
 const connectDB = require("./config/config");

@@ -57,20 +57,19 @@ const adminProtect = asyncHandler(async (req, res, next) => {
         });
       }
 
-      // next();
+      next();
     } catch (error) {
       console.log(error);
       res.status(401);
       throw new Error("Not authorized, token failed");
-      // next();
+      next();
     }
   }
   if (!token) {
     res.status(401);
     throw new Error("Not authorized, no token found");
+    next();
   }
-
-  next();
 });
 
 module.exports = { protect, adminProtect };

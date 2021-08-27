@@ -25,7 +25,7 @@ import {
   userUpdateProfileReducer,
 } from "./reducers/userReducer";
 
-import { adminLoginReducer } from "./reducers/adminReducer";
+import { adminLoginReducer, adminViewOrders } from "./reducers/adminReducer";
 
 // USING REDUX
 /*
@@ -60,6 +60,7 @@ const reducer = combineReducers({
   cart: cartReducer,
   userLogin: userLoginReducer,
   adminLogin: adminLoginReducer,
+  orderListAll: adminViewOrders,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
